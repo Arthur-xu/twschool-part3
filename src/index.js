@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import Route from './router/index';
 import * as serviceWorker from './serviceWorker';
+import './index.css';
+import MainLayout from './Layout';
+import 'antd/dist/antd.css'
 
-const render = (component) => {
-    ReactDOM.render(<App>
-        {component}
-    </App>,
+const render = (Component) => {
+    ReactDOM.render(<MainLayout>
+        <Component />
+      </MainLayout>,
     document.getElementById('root'));
 }
 render(Route);

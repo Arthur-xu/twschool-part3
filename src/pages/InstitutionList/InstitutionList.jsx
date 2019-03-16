@@ -15,7 +15,7 @@ export default class InstituationList extends Component {
     }
     render (){
         return <div>
-            test
+            NavLink
         </div>
     }
 }
