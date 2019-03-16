@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import 'antd/dist/antd.css'
-import './App.scss'
+import React, { Component } from 'react'
+import Layout from './components/Layout'
+import RouteViews from './router'
 
 class App extends Component {
-  render() {
-    return (
-        <div className="container" />
-    );
-  }
+  render = () => (
+    <RouteViews>
+      <Layout />
+    </RouteViews>
+  )
 }
 
-export default App;
+export default App
