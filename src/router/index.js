@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
-import InstitutionList from '../pages/Institution/InstituationList'
+import { HashRouter, Switch, Route, Redirect, Router } from 'react-router-dom';
+import InstitutionList from '../pages/InstitutionList/InstitutionList'
 import AddInstitution from '../pages/AddInstitution/AddInstitution'
-import Layout from '../Layout';
+
 export default class RouteConfig extends Component{
-    render(){
-      return(
-        <HashRouter>
-          <Switch>
-            <Route path="/" component={Layout}>
-                <Route path="/InstitutionList" component={InstitutionList} />
+  render(){
+    return(
+      <HashRouter>
+        <Switch>
+            <Router>
+                <Route path="/" exact component={InstitutionList} />
                 <Route path="/AddInstitution" component={AddInstitution} />
-            </Route>
-            <Redirect to="/" />
-          </Switch>
-        </HashRouter>
-      )
-    }
+            </Router>
+          
+          <Redirect to="/" />
+        </Switch>
+      </HashRouter>
+    )
   }
+}
