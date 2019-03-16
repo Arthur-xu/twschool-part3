@@ -1,6 +1,6 @@
 
 const URL = 'https://example.com/'
 
-export const URL = {
+export default {
     create: `${URL}create`
 }

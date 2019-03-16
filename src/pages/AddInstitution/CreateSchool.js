@@ -1,6 +1,7 @@
 import React from 'react';
 import CONSTANT from '../../constant/other.constant';
-class CreateSchool extends React.Component {
+import URL from '../../constant/http.constant';
+export default class CreateSchool extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,7 +16,19 @@ class CreateSchool extends React.Component {
     }
 
     doSave = () => {
-        console.log(222)
+        const params = {}
+        fetch(URL, {
+            method: 'POST',
+            body: params,
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        }).then(res => res.json())
+            .catch(error => {
+                console.log(error)
+            }).then(response => {
+                console.log(response)
+            })
     }
 
     handleTextareInput = (event) => {
