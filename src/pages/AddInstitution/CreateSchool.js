@@ -73,12 +73,6 @@ export default class CreateSchool extends React.Component {
                     wrapperCol: { span: 14 }
                 }
                 : null
-        const buttonItemLayout =
-            formLayout === 'horizontal'
-                ? {
-                    wrapperCol: { span: 14, offset: 4 }
-                }
-                : null
         return (
             <div className="create-school">
 
