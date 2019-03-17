@@ -17,13 +17,11 @@ export default class CreateSchool extends React.Component {
             title: '',
             describe: '',
             canInput: true,
-            // whetherGotoList: false,
         }
     }
 
     backToList = () => {
         console.log('should go to list');
-        // this.setState({ whetherGotoList: true })
     }
 
     doSave = () => {
@@ -65,14 +63,7 @@ export default class CreateSchool extends React.Component {
     }
 
     render() {
-        const { formLayout } = this.state
-        const formItemLayout =
-            formLayout === 'horizontal'
-                ? {
-                    labelCol: { span: 4 },
-                    wrapperCol: { span: 14 }
-                }
-                : null
+        const { formLayout } = this.state;
         return (
             <div className="create-school">
 
@@ -82,10 +73,10 @@ export default class CreateSchool extends React.Component {
 
                 <h3 className="title">创建训练营</h3>
                 <Form>
-                    <Form.Item label="标题" {...formItemLayout}>
+                    <Form.Item label="标题">
                         <Input value={this.state.title} onChange={this.handleTitleChange} />
                     </Form.Item>
-                    <Form.Item label="描述" {...formItemLayout}>
+                    <Form.Item label="描述">
                         <TextArea
                             value={this.state.describe}
                             onChange={this.handleTextareInput}
