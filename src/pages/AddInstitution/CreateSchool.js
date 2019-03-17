@@ -26,13 +26,27 @@ export default class CreateSchool extends React.Component {
 
     doSave = () => {
         if (!this.state.title || !this.state.describe) {
-            return message.warning('标题和描述必输')
+            return message.warning('标题或描述均不能为空')
         }
 
         if (this.state.title.length > 20) {
-            return message.warning('标题长度小于20')
+            return message.warning('标题长度需要小于20')
         }
 
+        if (this.state.describe.length > 300) {
+            return message.warning('描述最多300个字')
+        }
+
+        function isNull(str) {
+            if (str == "") return true;
+            var regu = "^[ ]+$";
+            var re = new RegExp(regu);
+            return re.test(str);
+        }
+
+        if (isNull(this.state.title)) {
+            return message.warning('请输入标题')
+        }
 
         const params = {
             title: this.state.title,
@@ -40,16 +54,14 @@ export default class CreateSchool extends React.Component {
         };
 
         const sucFun = (response) => {
-            console.log('should go to list');
-            message.success('This is a message of success');
+            message.success('创建训练营成功');
             setTimeout(() => {
                 this.backToList();
             }, 500);
         }
 
         const failFun = (error) => {
-            console.log(error);
-            message.error('This is a message of error');
+            message.error('创建训练营失败');
         }
 
         commonFun.createRequest({ URL: URL.create, params, method: 'POST', sucFun, failFun });
