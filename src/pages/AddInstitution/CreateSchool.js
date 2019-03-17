@@ -63,7 +63,6 @@ export default class CreateSchool extends React.Component {
     }
 
     render() {
-        const { formLayout } = this.state;
         return (
             <div className="create-school">
 
