@@ -1,19 +1,29 @@
-import { message, Button } from 'antd';
-import URL from '../constant/http.constant';
-
 export default {
+    getList({ URL, sucFun, failFun }) {
+        fetch(URL)
+            .then(res => res.json())
+            .then(response => {
+                sucFun(response);
+            }).catch(error => {
+                failFun(error);
+            })
+    },
     createRequest({ URL, params, method, sucFun, failFun }) {
+        console.log(URL)
         fetch(URL, {
             method,
-            body: params,
+            body: `title=${params.title}&content=${params.content}`
+            ,
             headers: new Headers({
-                'Content-Type': 'application/json'
-            })
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }),
+            credentials: 'include'
         }).then(res => res.json())
             .then(response => {
                 sucFun(response);
             }).catch(error => {
                 failFun(error);
             })
+
     }
 }
