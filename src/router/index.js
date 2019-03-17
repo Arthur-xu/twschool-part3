@@ -3,14 +3,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
+  HashRouter
 } from 'react-router-dom'
 import InstitutionList from '../pages/InstitutionList/InstitutionList'
 import AddInstitution from '../pages/AddInstitution/CreateSchool'
 class RouteViews extends Component {
   render() {
     return (
-      <Router>
+      <HashRouter>
         {this.props.children}
         <main>
           <div className="content">
@@ -21,7 +22,7 @@ class RouteViews extends Component {
             </Switch>
           </div>
         </main>
-      </Router>
+      </HashRouter>
     )
   }
 }

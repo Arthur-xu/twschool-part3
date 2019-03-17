@@ -9,7 +9,6 @@ export default {
             })
     },
     createRequest({ URL, params, method, sucFun, failFun }) {
-        console.log(URL)
         fetch(URL, {
             method,
             body: `title=${params.title}&content=${params.content}`

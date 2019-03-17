@@ -21,11 +21,19 @@ export default class CreateSchool extends React.Component {
     }
 
     backToList = () => {
-        console.log('should go to list');
+        this.props.history.push('/InstitutionList');
     }
 
     doSave = () => {
-        console.log(this.state)
+        if (!this.state.title || !this.state.describe) {
+            return message.warning('标题和描述必输')
+        }
+
+        if (this.state.title.length > 20) {
+            return message.warning('标题长度小于20')
+        }
+
+
         const params = {
             title: this.state.title,
             content: this.state.describe
@@ -34,7 +42,9 @@ export default class CreateSchool extends React.Component {
         const sucFun = (response) => {
             console.log('should go to list');
             message.success('This is a message of success');
-            this.backToList();
+            setTimeout(() => {
+                this.backToList();
+            }, 500);
         }
 
         const failFun = (error) => {
