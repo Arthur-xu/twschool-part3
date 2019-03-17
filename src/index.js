@@ -6,4 +6,4 @@ import CreateSchool from "./pages/AddInstitution/CreateSchool";
 import './App.scss'
 import 'antd/dist/antd.css'
 
-render(<CreateSchool />, document.getElementById('root'))
+render(<App />, document.getElementById('root'))

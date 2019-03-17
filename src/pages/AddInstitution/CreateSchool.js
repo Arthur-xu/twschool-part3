@@ -6,12 +6,9 @@ import URL from '../../constant/http.constant'
 import './CreateSchool.scss'
 import commonFun from '../../common/commonFun'
 
-import { Typography, Form, Input, Button, message } from 'antd';
-import { Link } from 'react-router-dom'
-const { Title } = Typography;
+import { Form, Input, message } from 'antd';
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 const { TextArea } = Input;
-
-
 
 export default class CreateSchool extends React.Component {
     constructor(props) {
@@ -20,20 +17,20 @@ export default class CreateSchool extends React.Component {
             title: '',
             describe: '',
             canInput: true,
-            whetherGotoList: false,
+            // whetherGotoList: false,
         }
     }
 
     backToList = () => {
         console.log('should go to list');
-        // this.props.history.push('/InstitutionList')
-        this.setState({ whetherGotoList: true })
+        // this.setState({ whetherGotoList: true })
     }
 
     doSave = () => {
+        console.log(this.state)
         const params = {
             title: this.state.title,
-            describe: this.state.describe
+            content: this.state.describe
         };
 
         const sucFun = (response) => {
@@ -84,9 +81,11 @@ export default class CreateSchool extends React.Component {
                 : null
         return (
             <div className="create-school">
+
                 <div className="back-button">
                     <Link to="/InstitutionList">返回</Link>
                 </div>
+
                 <h3 className="title">创建训练营</h3>
                 <Form>
                     <Form.Item label="标题" {...formItemLayout}>
@@ -111,8 +110,8 @@ export default class CreateSchool extends React.Component {
                     <div className="button-container">
                         <Link to="/InstitutionList" className="cancel-button">
                             取消
-            </Link>
-                        <div className="submit-button">保存</div>
+                        </Link>
+                        <div className="submit-button" onClick={this.doSave}>保存</div>
                     </div>
                 </div>
             </div>

@@ -10,10 +10,10 @@ export default {
                 'Content-Type': 'application/json'
             })
         }).then(res => res.json())
-            .catch(error => {
-                failFun(error);
-            }).then(response => {
+            .then(response => {
                 sucFun(response);
+            }).catch(error => {
+                failFun(error);
             })
     }
 }
