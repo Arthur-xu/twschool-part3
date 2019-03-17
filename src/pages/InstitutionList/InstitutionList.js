@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { ReactComponent as AddButton } from '../../assets/imgs/2.svg'
 import { Link } from 'react-router-dom'
+import instituteApi from '../../apis/instituteApi'
 
 import './Institution.scss'
 
@@ -37,25 +38,14 @@ export default class InstituationList extends Component {
     this.initData()
   }
   initData = async () => {
-    // const institutionList = await
+    const InstitutionList = await instituteApi
+      .getInstituteList()
+      .then(req => req.data)
+      .catch(error => {
+        console.log(error)
+      })
     this.setState({
-      InstitutionList: [
-        {
-          header: '敏捷训练营',
-          desc:
-            '京东敏捷实战特训，京东内部的高绩效团队培训，真正的敏捷培训，为你深度分享用户故事、敏捷估算、敏捷项目计划及跟踪（任务看板，每日会议）等敏捷实践。'
-        },
-        {
-          header: '敏捷训练营',
-          desc:
-            '京东敏捷实战特训，京东内部的高绩效团队培训，真正的敏捷培训，为你深度分享用户故事、敏捷估算、敏捷项目计划及跟踪（任务看板，每日会议）等敏捷实践。'
-        },
-        {
-          header: '敏捷训练营',
-          desc:
-            '京东敏捷实战特训，京东内部的高绩效团队培训，真正的敏捷培训，为你深度分享用户故事、敏捷估算、敏捷项目计划及跟踪（任务看板，每日会议）等敏捷实践。'
-        }
-      ]
+      InstitutionList
     })
   }
 
@@ -66,7 +56,7 @@ export default class InstituationList extends Component {
       <div className="institution-list">
         <div className="toolbar">
           <div className="search-container">
-            <input type="text"/>
+            <input type="text" />
             <div className="search-button">搜索</div>
           </div>
         </div>
@@ -76,8 +66,8 @@ export default class InstituationList extends Component {
             return (
               <InstitutionInfoCard
                 key={index}
-                header={item.header}
-                desc={item.desc}
+                header={item.title}
+                desc={item.content}
                 handleOnClick={() => console.log('click')}
               />
             )
