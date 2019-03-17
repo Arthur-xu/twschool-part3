@@ -45,16 +45,16 @@
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  align-items: center;
   &.new-card {
     justify-content: center;
+    align-items: center;
     .desc {
       margin-top: 10px;
       color: #00b4c5;
     }
   }
   &.info-card {
-    padding: 20px 30px 0;
+    padding: 20px 30px;
     h3 {
       color: #00b4c5;
       align-self: flex-start;
@@ -63,6 +63,8 @@
     .desc {
       font-size: 14px;
       color: #686868;
+      overflow: scroll;
+      word-break: break-all;
     }
   }
 }
